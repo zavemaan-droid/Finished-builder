@@ -1,0 +1,6 @@
+{
+  "name": "Builder Studio",
+  "description": "An AI-powered app development platform to build Web and Android applications using plain English, complete with the J.A.R.V.I.S. voice assistant.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

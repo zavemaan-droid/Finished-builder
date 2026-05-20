@@ -1,0 +1,18 @@
+{
+  "short_name": "Builder Studio",
+  "name": "Builder Studio AI",
+  "description": "An AI-powered app development platform with J.A.R.V.I.S. voice assistant.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0d0f1a",
+  "theme_color": "#0d0f1a",
+  "display": "standalone",
+  "orientation": "portrait"
+}

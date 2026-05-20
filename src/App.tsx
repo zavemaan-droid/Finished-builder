@@ -1,0 +1,76 @@
+import { Switch, Route, Router as WouterRouter, Redirect } from "wouter";
+import { Toaster } from "@/components/ui/sonner";
+import { StudioProvider } from "@/contexts/StudioContext";
+import { Sidebar } from "@/components/Sidebar";
+import { BottomNav } from "@/components/BottomNav";
+import { VoiceAssistant } from "@/components/VoiceAssistant";
+import AssistantPage from "@/pages/Assistant";
+import StudioPage from "@/pages/Studio";
+import ProjectsPage from "@/pages/Projects";
+import MemoryPage from "@/pages/Memory";
+import TrainingPage from "@/pages/Training";
+import SettingsPage from "@/pages/Settings";
+import DashboardPage from "@/pages/Dashboard";
+import AgentsPage from "@/pages/Agents";
+import LibraryPage from "@/pages/Library";
+import EditorPage from "@/pages/Editor";
+import RepairPage from "@/pages/Repair";
+import RebuildPage from "@/pages/Rebuild";
+import VideoPage from "@/pages/Video";
+import LegalGatePage from "@/pages/LegalGate";
+import ConstraintsPage from "@/pages/Constraints";
+import AssetGeneratorPage from "@/pages/AssetGenerator";
+import NotFoundPage from "@/pages/not-found";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+
+function AppLayout() {
+  return (
+    <div className="flex h-full w-full overflow-hidden bg-background">
+      <Sidebar />
+
+      <main className="mobile-safe-main flex-1 min-w-0 overflow-hidden">
+        <Switch>
+          <Route path="/">
+            <Redirect to="/dashboard" />
+          </Route>
+          <Route path="/dashboard"  component={DashboardPage} />
+          <Route path="/assistant"  component={AssistantPage} />
+          <Route path="/studio"     component={StudioPage} />
+          <Route path="/repair"     component={RepairPage} />
+          <Route path="/rebuild"    component={RebuildPage} />
+          <Route path="/projects"   component={ProjectsPage} />
+          <Route path="/agents"     component={AgentsPage} />
+          <Route path="/memory"     component={MemoryPage} />
+          <Route path="/library"    component={LibraryPage} />
+          <Route path="/training"   component={TrainingPage} />
+          <Route path="/settings"   component={SettingsPage} />
+          <Route path="/editor"     component={EditorPage} />
+          <Route path="/video"      component={VideoPage} />
+          <Route path="/legal"      component={LegalGatePage} />
+          <Route path="/constraints" component={ConstraintsPage} />
+          <Route path="/assets"     component={AssetGeneratorPage} />
+          <Route path="/error"      component={NotFoundPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </main>
+
+      <BottomNav />
+      <VoiceAssistant />
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <StudioProvider>
+      <ErrorBoundary>
+        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
+          <AppLayout />
+        </WouterRouter>
+        <Toaster />
+      </ErrorBoundary>
+    </StudioProvider>
+  );
+}
+
+export default App;
